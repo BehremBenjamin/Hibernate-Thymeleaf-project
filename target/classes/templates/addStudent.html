@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- CSS only -->
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" rel="stylesheet">
+    <title>Add Student: </title>
+</head>
+<body>
+<form method="post" th:action="@{/saved}" th:object="${student}">
+    <div class="form-group">
+    <ul>
+        <li>
+            <label>First Name:</label>
+            <input th:field="*{firstName}" type="text"/>
+        </li>
+        <li>
+            <label>Last Name:</label>
+            <input th:field="*{lastName}" type="text"/>
+        </li>
+        <li>
+            <label>E Mail:</label>
+            <input th:field="*{email}" type="email"/><br/>
+            <input type="submit" value="save student">
+        </li>
+        </ul>
+    </div>
+</form>
+
+</body>
+</html>

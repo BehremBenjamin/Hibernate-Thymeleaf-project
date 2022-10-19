@@ -1,0 +1,11 @@
+<hibernate-mapping>
+    <class name="com.example.demo.Entities.Student" table="student">
+        <id name="id">
+            <generator class="assigned"></generator>
+        </id>
+        <property name="first_name" type="String"/>
+        <property name="last_name" type="String"/>
+        <property name="email" type="String"/>
+    </class>
+
+</hibernate-mapping>
