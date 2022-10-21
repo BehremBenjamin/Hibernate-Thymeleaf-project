@@ -25,6 +25,7 @@ public class TestHibernate {
         Transaction t = session.beginTransaction();
 
 
+
         /* ++++ code for creating and saving object ++++
 
         <---  the constructor is without "id" parameter/argument. @GeneratedValue(strategy = GenerationType.IDENTITY) --->
@@ -33,15 +34,55 @@ public class TestHibernate {
         t.commit();
         session.close();
         factory.close();
-        */
 
 
-        /* ++++ code for creating and saving object ++++
+
+        ++++ code for retrieving an object by passing Id parameter/argument ++++
 
         Student myStudent = session.get(Student.class, (long) 1);
         System.out.println("\n\n\n");
         System.out.println(myStudent);
         System.out.println("\n\n\n");
+        t.commit();
+        session.close();
+        factory.close();
+
+
+
+        ++++ code for retrieving lists of objects ++++
+
+        List<Student> allStudents = session
+                .createQuery("from Student")
+                .getResultList();
+        System.out.println("\n\n\n");
+        allStudents.forEach((s) -> {
+            System.out.println(s.getId() + " " + s.getFirstName() + " " + s.getLastName() + " " + s.getEmail());
+        });
+
+
+         ++++ code object update example +++
+
+         session.createQuery("UPDATE Student s SET email = 'email@value' WHERE s.lastName = 'lastNameValue'")
+                .executeUpdate();
+        t.commit();
+        session.close();
+        factory.close();
+
+
+
+        ++++ two ways of deleting an object with hibernate +++
+
+        <--- via session method .delete() --->
+        Student deletedStudent = session.get(Student.class, (long) 3);
+        session.delete(deletedStudent);
+        t.commit();
+        session.close();
+        factory.close();
+
+
+        <--- or with hql --->
+        session.createQuery("DELETE Student s WHERE s.lastName = 'value'")
+                .executeUpdate();
         t.commit();
         session.close();
         factory.close();
