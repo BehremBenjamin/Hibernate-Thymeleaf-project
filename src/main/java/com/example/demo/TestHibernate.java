@@ -1,3 +1,7 @@
+// INFO: redundant (repeating) code should be refactored
+// and isolated. This project is for training purpouse.
+// be free to refactor methods.
+
 package com.example.demo;
 
 import com.example.demo.Entities.Student;
